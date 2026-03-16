@@ -100,21 +100,21 @@ const AboutContent = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Legacy</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Quality You Can Feel & Trust</h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Since 1990, MRM has been at the forefront of building materials innovation. What started as a small family
-              business has grown into one of India's most trusted manufacturers of premium plywood, laminates, and
-              building materials.
+              MRM is a building materials brand built on quality you can feel and trust. Our range of plywood, laminates, laminate liners, louvers, and interior surfaces is thoughtfully crafted to bring together strength, refined design, and everyday reliability.
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Our commitment to quality has earned us the trust of architects, interior designers, contractors, and
-              homeowners across the country. Every product we create reflects our dedication to excellence.
+              Developed by Rakesh Mehta, with over 25 years of hands-on market experience, MRM is shaped by a deep understanding of customer needs and a belief in doing things the right way.
+            </p>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              As we grow into a complete building materials brand, we remain committed to creating products that earn trust over time and help build spaces meant to be lived in and loved.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="text-center p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="pt-4">
-                  <h3 className="text-3xl font-bold text-amber-600 mb-2">30+</h3>
-                  <p className="text-muted-foreground">Years of Excellence</p>
+                  <h3 className="text-3xl font-bold text-amber-600 mb-2">25+</h3>
+                  <p className="text-muted-foreground">Years Warranty</p>
                 </CardContent>
               </Card>
               <Card className="text-center p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -125,12 +125,13 @@ const AboutContent = () => {
               </Card>
             </div>
           </div>
-          <div
-            className="h-96 bg-cover bg-center rounded-xl shadow-lg animate-fade-in animate-stagger-2"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80')`,
-            }}
-          ></div>
+          <div className="animate-fade-in animate-stagger-2">
+            <img
+              src="/assets/plywoodfull.png"
+              alt="MRM Manufacturing Facility - Premium Plywood Quality"
+              className="w-full h-auto"
+            />
+          </div>
         </div>
       </section>
 
@@ -173,37 +174,6 @@ const AboutContent = () => {
               </CardContent>
             </Card>
           )}
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Certifications & Standards</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Committed to maintaining the highest quality standards</p>
-          </div>
-
-          {/* Certification Grid */}
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {certifications.map((cert) => (
-                <Card key={cert.id} className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={cert.image}
-                      alt={cert.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-4 text-center">
-                    <h3 className="font-semibold text-lg text-foreground mb-2">{cert.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{cert.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

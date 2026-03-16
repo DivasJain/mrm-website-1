@@ -11,7 +11,6 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
     { name: "About", href: "/about" },
-    { name: "Inspiration", href: "/inspiration" },
     { name: "Downloads", href: "/download" },
     { name: "Contact", href: "/contact" },
   ]
@@ -27,7 +26,7 @@ const Header = () => {
               className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto drop-shadow-sm"
               style={{ imageRendering: 'crisp-edges', filter: 'brightness(1.1) contrast(1.1)' }}
             />
-            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 hidden xs:inline">Woodcraft</div>
+            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 hidden xs:inline">Ply & Lam</div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,7 +35,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-sm xl:text-base text-gray-700 hover:text-amber-600 font-medium transition-colors duration-200 px-2 py-1 rounded-md hover:bg-amber-50"
+                className="text-sm xl:text-base text-gray-700 hover:text-[#F26A21] font-medium transition-colors duration-200 px-2 py-1 rounded-md hover:bg-[#F5EFE6]"
               >
                 {item.name}
               </Link>
@@ -46,7 +45,7 @@ const Header = () => {
           <div className="flex items-center space-x-2 sm:space-x-4">
             <Link
               to="/store-locator"
-              className="flex items-center space-x-1 sm:space-x-2 text-gray-700 hover:text-amber-600 transition-colors duration-200 hover:bg-amber-50 px-2 sm:px-3 py-2 rounded-lg"
+              className="flex items-center space-x-1 sm:space-x-2 text-gray-700 hover:text-[#F26A21] transition-colors duration-200 hover:bg-[#F5EFE6] px-2 sm:px-3 py-2 rounded-lg"
             >
               <Store className="h-4 w-4 sm:h-5 sm:w-5" />
               <span className="hidden md:inline font-medium text-sm sm:text-base">Store Locator</span>
@@ -65,7 +64,7 @@ const Header = () => {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className="text-base sm:text-lg font-medium text-gray-700 hover:text-amber-600 transition-colors duration-200 hover:bg-amber-50 px-3 py-2 rounded-lg"
+                      className="text-base sm:text-lg font-medium text-gray-700 hover:text-[#F26A21] transition-colors duration-200 hover:bg-[#F5EFE6] px-3 py-2 rounded-lg"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
@@ -75,7 +74,7 @@ const Header = () => {
                   <div className="border-t pt-4">
                     <Link
                       to="/store-locator"
-                      className="flex items-center space-x-2 text-lg font-medium text-gray-700 hover:text-amber-600 transition-colors duration-200 hover:bg-amber-50 px-3 py-2 rounded-lg"
+                      className="flex items-center space-x-2 text-lg font-medium text-gray-700 hover:text-[#F26A21] transition-colors duration-200 hover:bg-[#F5EFE6] px-3 py-2 rounded-lg"
                       onClick={() => setIsOpen(false)}
                     >
                       <Store className="h-4 w-4" />

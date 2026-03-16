@@ -1,51 +1,74 @@
 import { Link } from "react-router-dom"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import { ArrowDown, Star, Award, Shield, Truck } from "lucide-react"
+import { Shield, Award, CheckCircle, MapPin } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+
+const stores = [
+  {
+    id: 1,
+    name: "MRM PLY LAM LLP",
+    image: "/modern-plywood-store-exterior-downtown.jpg",
+    city: "Coimbatore",
+  },
+  {
+    id: 2,
+    name: "MAHAVIR LAMINATES",
+    image: "/large-plywood-showroom-midtown-storefront.jpg",
+    city: "Coimbatore",
+  },
+  {
+    id: 3,
+    name: "M CUBE SPACES LLP",
+    image: "/industrial-plywood-warehouse-brooklyn-exterior.jpg",
+    city: "Bengaluru",
+  },
+  {
+    id: 4,
+    name: "MAHAVIR WOODS N VENEER",
+    image: "/modern-wood-materials-store-queens-storefront.jpg",
+    city: "Chennai",
+  },
+  {
+    id: 5,
+    name: "R S Plywood",
+    image: "/plywood-lumber-yard-staten-island-store.jpg",
+    city: "Jodhpur",
+  },
+]
 
 const HomePage = () => {
   const productCategories = [
     {
-      name: "MRM Gold BWP Plywood",
-      description: "Premium boiling water proof plywood with 25-year warranty for superior durability",
-      image:
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      name: "Plywood",
       href: "/products/plyandboards",
-      category: "Ply and Boards",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+      gridArea: "plywood",
     },
     {
-      name: "Premium Blockboards",
-      description: "High-strength blockboards perfect for furniture and construction applications",
-      image:
-        "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      name: "Blockboard",
       href: "/products/plyandboards",
-      category: "Ply and Boards",
+      image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80",
+      gridArea: "blockboard",
     },
     {
-      name: "Designer Laminates",
-      description: "Beautiful laminated sheets for stunning interior design applications",
-      image:
-        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      name: "Laminates",
       href: "/products/laminates",
-      category: "Laminates",
+      image: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
+      gridArea: "laminates",
     },
     {
-      name: "Charcoal Louvers",
-      description: "Elegant louvers for stylish feature walls and modern ceiling designs",
-      image:
-        "https://images.unsplash.com/photo-1587387119725-76351a1a456c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      name: "Louvers",
       href: "/products/louvers",
-      category: "Louvers",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      gridArea: "louvers",
     },
     {
-      name: "Natural Veneers",
-      description: "Premium wood veneers for luxury finishes and sophisticated interiors",
-      image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      href: "/products/veneers",
-      category: "Veneers",
+      name: "Interior Finishes",
+      href: "/products/laminateliners",
+      image: "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80",
+      gridArea: "interior",
     },
   ]
 
@@ -53,22 +76,22 @@ const HomePage = () => {
     {
       icon: Shield,
       title: "25 Years Warranty",
-      description: "Industry-leading warranty on our premium BWP plywood range for complete peace of mind",
+      description: "Industry-leading warranty on BWP plywood range for complete peace of mind",
     },
     {
       icon: Award,
-      title: "Lifetime Range",
-      description: "Select products backed by lifetime warranty guarantee for ultimate durability",
+      title: "Lifetime Guarantee",
+      description: "Premium products with lifetime warranty for ultimate durability",
     },
     {
-      icon: Star,
-      title: "Certified Quality",
-      description: "All products meet international quality standards and certifications",
+      icon: CheckCircle,
+      title: "IS:710 Certified",
+      description: "Internationally certified BWP & BWR grade plywood",
     },
     {
-      icon: Truck,
+      icon: MapPin,
       title: "Pan-India Delivery",
-      description: "Reliable delivery network covering all major cities and towns across India",
+      description: "Reliable delivery to all major cities and towns",
     },
   ]
 
@@ -76,216 +99,244 @@ const HomePage = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted/20 to-background">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Hero Section - Compact Banner */}
+      <section className="relative h-[90vh] min-h-[1200px] flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/10"></div>
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
           style={{
-            backgroundImage: `url('https://images.pexels.com/photos/9115220/pexels-photo-9115220.jpeg')`,
+            backgroundImage: `url('/assets/HeroBanner1.png')`,
           }}
         ></div>
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 text-balance">MRM Woodcraft</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 text-pretty">
-            Delivering excellence in plywood, laminates, and blockboards with unmatched quality and lifetime warranties
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/products"
-              className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
-            >
-              Explore Products
-            </Link>
-            <Link
-              to="/download"
-              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/30"
-            >
-              Download Catalogue
-            </Link>
-          </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="text-white w-8 h-8" />
-        </div>
-      </section>
-
-      {/* Brand Motto Section */}
-      <section className="py-16 bg-gradient-to-r from-amber-50 to-orange-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 text-balance">Premium Building Materials</h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
-            Crafting excellence since 1990 with innovative solutions, superior quality, and unwavering commitment to perfection in every piece
-          </p>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
       </section>
 
 
-      {/* Our Product Range - Clean Minimal Design */}
-      <section className="py-16 bg-gradient-to-br from-background via-muted/20 to-background">
+      {/* Our Product Range - Expanded Mosaic Grid */}
+      <section className="py-16 bg-[#F5EFE6]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Our Product Range</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-pretty leading-relaxed">
-              Comprehensive solutions crafted for enduring performance and elevated design.
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2B2B2B] mb-4 text-balance">Our Product Range</h2>
+            <p className="text-[#6E6E6E] max-w-2xl mx-auto text-lg">
+              Surfaces and materials crafted for modern interiors.
             </p>
           </div>
 
-          <div className="space-y-12">
-            {/* MRM Ply & Boards */}
-            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src="/plyandboards-homepage.png"
-                    alt="MRM Ply & Boards"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <CardContent className="p-8 flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">MRM Ply & Boards</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Engineered for strength, stability, and long-term reliability—trusted by professionals for every build.
-                  </p>
-
-                  <div className="space-y-4">
-                    <p className="text-sm font-medium text-muted-foreground">Explore Categories:</p>
-                    <div className="flex flex-wrap gap-3">
-                      <Link to="/products/plyandboards">
-                        <Button variant="outline" className="bg-transparent">
-                          Ply and Boards
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </CardContent>
+          {/* Dynamic Mosaic Grid - Plywood Full Height on Desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Plywood - Full height card on desktop */}
+            <Link 
+              to="/products/plyandboards"
+              className="relative overflow-hidden rounded-[14px] group cursor-pointer lg:row-span-2"
+              style={{ minHeight: '500px', gridRow: 'span 2 / span 2' }}
+            >
+              <img
+                src={productCategories[0].image}
+                alt="Plywood"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 group-hover:via-black/30 transition-all duration-300" />
+              <div className="absolute bottom-6 left-6 transform group-hover:-translate-y-1 transition-transform duration-300">
+                <span className="text-white font-bold text-3xl md:text-4xl drop-shadow-lg">
+                  {productCategories[0].name}
+                </span>
               </div>
-            </Card>
+            </Link>
 
-            {/* MRM Decor */}
-            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="md:order-2 relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src="/decor-homepagesection.png"
-                    alt="MRM Decor"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
+            {/* Right side - 2 columns of smaller cards */}
+            <div className="lg:col-span-2 grid grid-cols-2 gap-4">
+              {/* Blockboard */}
+              <Link 
+                to="/products/plyandboards"
+                className="relative overflow-hidden rounded-[14px] group cursor-pointer"
+                style={{ minHeight: '242px' }}
+              >
+                <img
+                  src={productCategories[1].image}
+                  alt="Blockboard"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 group-hover:via-black/30 transition-all duration-300" />
+                <div className="absolute bottom-4 left-4 transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <span className="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                    {productCategories[1].name}
+                  </span>
                 </div>
-                <CardContent className="md:order-1 p-8 flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">MRM Decor</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Refined surfaces and textures that elevate interiors—crafted for a luxe, modern aesthetic.
-                  </p>
+              </Link>
 
-                  <div className="space-y-4">
-                    <p className="text-sm font-medium text-muted-foreground">Explore Categories:</p>
-                    <div className="flex flex-wrap gap-3">
-                      <Link to="/products/veneers">
-                        <Button variant="outline" className="bg-transparent">
-                          Veneers
-                        </Button>
-                      </Link>
-                      <Link to="/products/laminates">
-                        <Button variant="outline" className="bg-transparent">
-                          Laminates
-                        </Button>
-                      </Link>
-                      <Link to="/products/louvers">
-                        <Button variant="outline" className="bg-transparent">
-                          Louvers
-                        </Button>
-                      </Link>
-                      <Link to="/products/laminateliners">
-                        <Button variant="outline" className="bg-transparent">
-                          Laminate Liners
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+              {/* Laminates */}
+              <Link 
+                to="/products/laminates"
+                className="relative overflow-hidden rounded-[14px] group cursor-pointer"
+                style={{ minHeight: '242px' }}
+              >
+                <img
+                  src={productCategories[2].image}
+                  alt="Laminates"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 group-hover:via-black/30 transition-all duration-300" />
+                <div className="absolute bottom-4 left-4 transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <span className="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                    {productCategories[2].name}
+                  </span>
+                </div>
+              </Link>
+
+              {/* Louvers */}
+              <Link 
+                to="/products/louvers"
+                className="relative overflow-hidden rounded-[14px] group cursor-pointer"
+                style={{ minHeight: '242px' }}
+              >
+                <img
+                  src={productCategories[3].image}
+                  alt="Louvers"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 group-hover:via-black/30 transition-all duration-300" />
+                <div className="absolute bottom-4 left-4 transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <span className="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                    {productCategories[3].name}
+                  </span>
+                </div>
+              </Link>
+
+              {/* Interior Finishes */}
+              <Link 
+                to="/products/laminateliners"
+                className="relative overflow-hidden rounded-[14px] group cursor-pointer"
+                style={{ minHeight: '242px' }}
+              >
+                <img
+                  src={productCategories[4].image}
+                  alt="Interior Finishes"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:from-black/60 group-hover:via-black/30 transition-all duration-300" />
+                <div className="absolute bottom-4 left-4 transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <span className="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                    {productCategories[4].name}
+                  </span>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* About Us Section - 30+ Years of Excellence */}
-      <section className="py-16">
+      {/* About Us & Quality USPs Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">30+ Years of Excellence</h2>
-              <p className="text-lg text-muted-foreground text-pretty leading-relaxed">
-                Since 1990, MRM Woodcraft has been at the forefront of manufacturing premium building materials. Our
-                commitment to quality and innovation has made us a trusted name in the industry.
+              <h2 className="text-3xl md:text-4xl font-bold text-[#2B2B2B] mb-4 text-balance">Quality You Can Feel & Trust</h2>
+              <p className="text-lg text-[#6E6E6E] text-pretty leading-relaxed">
+                MRM is a building materials brand built on quality you can feel and trust. Our range of plywood, laminates, laminate liners, louvers, and interior surfaces is thoughtfully crafted to bring together strength, refined design, and everyday reliability.
               </p>
-              <p className="text-muted-foreground text-pretty leading-relaxed">
-                From our state-of-the-art manufacturing facilities to our rigorous quality control processes, every MRM
-                product is crafted to exceed expectations and deliver lasting value.
+              <p className="text-[#6E6E6E] text-pretty leading-relaxed">
+                Developed by Rakesh Mehta, with over 25 years of market experience, MRM is shaped by a deep understanding of customer needs and a belief in doing things the right way.
               </p>
               <Link
                 to="/about"
-                className="inline-block bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+                className="inline-block bg-[#F26A21] hover:bg-[#D85A17] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
               >
-                Learn Our Story
+                Our Story
               </Link>
             </div>
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="MRM Manufacturing Facility"
-                className="rounded-lg shadow-2xl"
-              />
+            <div className="grid md:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-all duration-300 group"
+                >
+                  <CardContent className="pt-6 pb-5">
+                    <div className="mb-4 flex justify-center">
+                      <div className="p-3 bg-[#F26A21]/10 rounded-full group-hover:bg-[#F26A21]/20 transition-colors">
+                        <feature.icon className="h-6 w-6 text-[#F26A21]" />
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 text-[#2B2B2B]">{feature.title}</h3>
+                    <p className="text-sm text-[#6E6E6E]">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose MRM - USPs Section */}
-      <section className="py-16">
+      {/* Our Stores Section */}
+      <section className="py-16 bg-[#F5EFE6]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Why Choose MRM?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty leading-relaxed">
-              Three decades of excellence in manufacturing premium building materials
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2B2B2B] mb-4">Our Stores</h2>
+            <p className="text-lg text-[#6E6E6E] max-w-2xl mx-auto mb-8">
+              Visit our stores across multiple locations for personalized service and expert consultation
             </p>
+            <Link to="/store-locator">
+              <Button size="lg" className="bg-[#F26A21] hover:bg-[#D85A17] hover:scale-105 transition-transform duration-300">
+                <MapPin className="mr-2 h-5 w-5" />
+                View All Stores
+              </Button>
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
-              >
-                <CardContent className="pt-8 pb-6">
-                  <div className="mb-6 flex justify-center">
-                    <div className="p-4 bg-amber-100 rounded-full group-hover:bg-amber-200 transition-colors">
-                      <feature.icon className="h-8 w-8 text-amber-600" />
-                    </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {stores.map((store) => (
+              <Link key={store.id} to="/store-locator">
+                <Card className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden h-80 flex flex-col">
+                  <div className="relative h-48 overflow-hidden flex-shrink-0">
+                    <img
+                      src={store.image}
+                      alt={`${store.name} storefront`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">{feature.title}</h3>
-                  <p className="text-muted-foreground text-pretty leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4 text-center flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-semibold text-lg text-[#2B2B2B] mb-2">{store.name}</h3>
+                      <p className="text-[#6E6E6E] mb-3">{store.city}</p>
+                    </div>
+                    <Button size="sm" className="w-full bg-[#F26A21] hover:bg-[#D85A17] hover:scale-105 transition-transform duration-300 mt-auto">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      Visit Store
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-12 bg-[#F26A21]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Ready to Start Your Project?</h2>
-          <p className="text-lg text-muted-foreground mb-6 text-pretty max-w-2xl mx-auto">
-            Get access to our complete product catalogue and pricing information
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-balance">Ready to Start Your Project?</h2>
+          <p className="text-lg text-white/90 mb-6 text-pretty max-w-2xl mx-auto">
+            Explore our complete range of premium building materials or connect with our team for personalized assistance
           </p>
-          <Link
-            to="/download"
-            className="bg-white text-amber-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg inline-block"
-          >
-            Download Catalogue & Pricing
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact"
+              className="bg-white text-[#F26A21] hover:bg-[#F5EFE6] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg inline-block"
+            >
+              Contact Us
+            </Link>
+            <Link
+              to="/store-locator"
+              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/30 inline-block"
+            >
+              Find a Dealer
+            </Link>
+            <Link
+              to="/download"
+              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/30 inline-block"
+            >
+              Download Catalogue
+            </Link>
+          </div>
         </div>
       </section>
 

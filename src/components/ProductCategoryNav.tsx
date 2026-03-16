@@ -5,17 +5,7 @@ import { useState } from "react"
 import type { ProductCategory } from "@/data/enhanced-products"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-// Custom scrollbar hide utility
-const scrollbarHideStyles = `
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-`
+import { Link } from "react-router-dom"
 
 interface ProductCategoryNavProps {
   activeCategory: ProductCategory
@@ -33,27 +23,12 @@ const categories: { key: ProductCategory; label: string; description: string; ic
 const ProductCategoryNav: React.FC<ProductCategoryNavProps> = ({ activeCategory, onChange }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-
-  const handleCategoryChange = (category: ProductCategory) => {
-    onChange(category)
-    setIsMobileMenuOpen(false)
-
-    // Smooth scroll to products section
-    const productsSection = document.querySelector('[data-products-section]')
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
     <>
-      {/* Hidden scrollbar styles */}
-      <style jsx>{scrollbarHideStyles}</style>
-
       {/* Desktop Navigation */}
       <section className="hidden md:block py-8 bg-white border-b border-gray-100">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
@@ -63,20 +38,24 @@ const ProductCategoryNav: React.FC<ProductCategoryNavProps> = ({ activeCategory,
           </div>
           <div className="flex justify-between w-full gap-4">
             {categories.map((category) => (
-              <Button
+              <Link
                 key={category.key}
-                onClick={() => handleCategoryChange(category.key)}
-                variant={activeCategory === category.key ? "default" : "outline"}
-                size="lg"
-                className={`flex-1 h-auto py-6 px-6 font-semibold transition-all duration-200 text-center text-base rounded-xl ${
-                  activeCategory === category.key
-                    ? "bg-amber-600 text-white shadow-lg border-amber-600"
-                    : "hover:bg-amber-50 hover:border-amber-200 text-gray-700 border-gray-200"
-                }`}
-                aria-label={`Switch to ${category.label} category`}
+                to={`/products/${category.key}`}
+                className="flex-1"
               >
-                <span className="font-semibold whitespace-nowrap">{category.label}</span>
-              </Button>
+                <Button
+                  variant={activeCategory === category.key ? "default" : "outline"}
+                  size="lg"
+                  className={`w-full h-auto py-6 px-6 font-semibold transition-all duration-200 text-center text-base rounded-xl ${
+                    activeCategory === category.key
+                      ? "bg-amber-600 text-white shadow-lg border-amber-600"
+                      : "hover:bg-amber-50 hover:border-amber-200 text-gray-700 border-gray-200"
+                  }`}
+                  aria-label={`View ${category.label} products`}
+                >
+                  <span className="font-semibold whitespace-nowrap">{category.label}</span>
+                </Button>
+              </Link>
             ))}
           </div>
         </div>
@@ -98,28 +77,32 @@ const ProductCategoryNav: React.FC<ProductCategoryNavProps> = ({ activeCategory,
 
         <div className="max-h-80 overflow-y-auto">
           {categories.map((category, index) => (
-            <Button
+            <Link
               key={category.key}
-              onClick={() => handleCategoryChange(category.key)}
-              variant={activeCategory === category.key ? "primary" : "ghost"}
-              className={`w-full py-6 px-6 h-auto text-left transition-all duration-200 flex items-center justify-between ${
-                activeCategory === category.key
-                  ? "bg-amber-600 text-white shadow-lg"
-                  : "hover:bg-amber-50 text-gray-700"
-              } ${index === 0 ? 'rounded-t-2xl' : ''} ${index === categories.length - 1 ? 'rounded-b-2xl' : ''}`}
-              aria-label={`Switch to ${category.label} category`}
+              to={`/products/${category.key}`}
+              className="block"
             >
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-lg mb-2 truncate">{category.label}</div>
-                <div className="text-base leading-tight opacity-80">
-                  {category.description}
+              <Button
+                variant={activeCategory === category.key ? "primary" : "ghost"}
+                className={`w-full py-6 px-6 h-auto text-left transition-all duration-200 flex items-center justify-between ${
+                  activeCategory === category.key
+                    ? "bg-amber-600 text-white shadow-lg"
+                    : "hover:bg-amber-50 text-gray-700"
+                } ${index === 0 ? 'rounded-t-2xl' : ''} ${index === categories.length - 1 ? 'rounded-b-2xl' : ''}`}
+                aria-label={`View ${category.label} products`}
+              >
+                <div className="flex-1 min-w-0">
+                  <div className="font-bold text-lg mb-2 truncate">{category.label}</div>
+                  <div className="text-base leading-tight opacity-80">
+                    {category.description}
+                  </div>
                 </div>
-              </div>
 
-              {activeCategory === category.key && (
-                <div className="w-4 h-12 bg-white rounded-full flex-shrink-0" />
-              )}
-            </Button>
+                {activeCategory === category.key && (
+                  <div className="w-4 h-12 bg-white rounded-full flex-shrink-0" />
+                )}
+              </Button>
+            </Link>
           ))}
         </div>
       </div>

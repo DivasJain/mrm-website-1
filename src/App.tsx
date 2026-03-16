@@ -11,7 +11,6 @@ import AccountPage from './pages/AccountPage'
 import ContactPage from './pages/ContactPage'
 import DownloadPage from './pages/DownloadPage'
 import IndexPage from './pages/IndexPage'
-import InspirationPage from './pages/InspirationPage'
 import LoginPage from './pages/LoginPage'
 import ProductsPage from './pages/ProductsPage'
 import CategoryPage from './pages/CategoryPage'
@@ -32,7 +31,6 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/download" element={<DownloadPage />} />
               <Route path="/index" element={<IndexPage />} />
-              <Route path="/inspiration" element={<InspirationPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/:slug" element={<CategoryPage />} />

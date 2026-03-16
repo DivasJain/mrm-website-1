@@ -186,11 +186,11 @@ export default function StoreLocatorPage() {
       <Header />
       <main>
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-background via-muted/20 to-background">
+      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 text-balance">
-              Find Your Nearest MRM Store
+              Find the Nearest Store
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
               Locate MRM stores near you and discover our full range of products and services with expert support.
@@ -250,7 +250,7 @@ export default function StoreLocatorPage() {
       </section>
 
       {/* Store Results */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-r from-slate-50 via-gray-50 to-slate-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
@@ -264,10 +264,10 @@ export default function StoreLocatorPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredStores.map((store) => (
+            {filteredStores.map((store, index) => (
               <Dialog key={store.id}>
                 <DialogTrigger asChild>
-                  <Card className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                  <Card className="group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border-2 border-transparent hover:border-amber-400">
                     {/* Store Image with Hover Zoom */}
                     <div className="relative h-48 overflow-hidden">
                       <img
@@ -276,7 +276,7 @@ export default function StoreLocatorPage() {
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       {store.distance && (
-                        <Badge className="absolute top-3 right-3 bg-background/90 text-foreground">
+                        <Badge className="absolute top-3 right-3 bg-amber-600 text-white">
                           {store.distance} miles away
                         </Badge>
                       )}

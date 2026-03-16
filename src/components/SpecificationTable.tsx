@@ -20,8 +20,8 @@ const SpecificationTable: React.FC<SpecificationTableProps> = ({ specifications 
   const specs = specifications || defaultSpecs
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="w-full">
+      <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-amber-50">

@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Download, FileText, ImageIcon, Video } from "lucide-react"
+import { Download, FileText, ImageIcon, Video, Lock } from "lucide-react"
+import { useAuth } from "@/hooks/useAuth"
 
 const downloadCategories = {
   brochures: [
@@ -87,8 +89,16 @@ const downloadCategories = {
 
 const DownloadContent = () => {
   const [selectedCategory, setSelectedCategory] = useState<keyof typeof downloadCategories>("brochures")
+  const navigate = useNavigate()
+  const { user } = useAuth()
 
   const handleDownload = (url: string, fileName: string) => {
+    // Check if user is logged in
+    if (!user) {
+      // Redirect to login page
+      navigate("/login")
+      return
+    }
     // In a real application, this would trigger the actual download
     console.log(`Downloading: ${fileName}`)
     // For now, just open the URL
@@ -97,11 +107,34 @@ const DownloadContent = () => {
 
   return (
     <div className="space-y-12">
+      {/* Login Required Notice */}
+      {!user && (
+        <Card className="bg-amber-50 border-amber-200">
+          <CardContent className="p-6 flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-3">
+              <Lock className="h-5 w-5 text-amber-600" />
+              <div>
+                <h3 className="font-semibold text-amber-800">Login Required for Downloads</h3>
+                <p className="text-sm text-amber-700">Please login or register to access our product catalogues</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => navigate("/login")} className="bg-transparent border-amber-300 text-amber-800 hover:bg-amber-100">
+                Login
+              </Button>
+              <Button onClick={() => navigate("/login")} className="bg-amber-600 hover:bg-amber-700">
+                Register
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       <Card className="bg-muted/30">
         <CardContent className="p-8">
           <h2 className="text-2xl font-bold text-foreground mb-4">Download Center</h2>
           <p className="text-muted-foreground mb-6">
-            Access our comprehensive product catalogs and technical resources. All downloads are available instantly.
+            Access our comprehensive product catalogs and technical resources. {user ? "Downloads are now available." : "Please login to download files."}
           </p>
         </CardContent>
       </Card>
